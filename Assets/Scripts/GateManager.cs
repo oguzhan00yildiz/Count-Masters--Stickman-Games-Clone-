@@ -21,12 +21,13 @@ public class GateManager : MonoBehaviour
         {
             randomnumber = Random.Range(10,100);
             gateno.text = "+" + randomnumber.ToString();
+
+           
+          randomnumber+=1;
+         
         }
 
-        if (randomnumber % 2 !=0)  //random sayı çift mi kontrol etmek için
-        {
-            randomnumber+=1;
-        }
+        
     }
 
     

@@ -2,19 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
     public Transform player;
     private int numberofstickman;
+    [SerializeField] private TextMeshPro Countertxt;
     [SerializeField] private GameObject stickman;
     [Range(0f,20f)] [SerializeField] private float DistanceFactor, Radius;
 
     void Start()
     {
         player = transform;
-        numberofstickman = transform.childCount;
-        MakeStickman(30);
+        numberofstickman = transform.childCount-1;
+
+        Countertxt.text = numberofstickman.ToString();
+        
 
         
     }
@@ -45,6 +49,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         numberofstickman = transform.childCount-1;
+        Countertxt.text = numberofstickman.ToString();
 
         FormatStickman();
 
@@ -57,16 +62,15 @@ public class PlayerManager : MonoBehaviour
             other.transform.parent.GetChild(0).GetComponent<BoxCollider>().enabled=false;
             other.transform.parent.GetChild(1).GetComponent<BoxCollider>().enabled=false;
 
-            Debug.Log(other);
             var gateManager = other.GetComponent<GateManager>();
 
             if (gateManager.multiply)
         {
-            MakeStickman(numberofstickman* gateManager.randomnumber);
+            MakeStickman(numberofstickman* (gateManager.randomnumber-1));
         }
         else
         {
-            MakeStickman(numberofstickman + gateManager.randomnumber);
+            MakeStickman((numberofstickman + gateManager.randomnumber)-2);
         }
 
         }
