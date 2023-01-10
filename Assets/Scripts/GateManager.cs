@@ -14,7 +14,7 @@ public class GateManager : MonoBehaviour
     {
         if (multiply)
         {
-            randomnumber = Random.Range(1,3);
+            randomnumber = Random.Range(2,4);
             gateno.text = randomnumber.ToString() + "x";
         }
         else
