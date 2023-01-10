@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - gate
+  - playermanager
+  - gate1
   layers:
   - Default
   - TransparentFX
