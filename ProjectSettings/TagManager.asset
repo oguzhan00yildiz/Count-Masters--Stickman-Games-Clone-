@@ -7,7 +7,6 @@ TagManager:
   - gate
   - playermanager
   - gate1
-  - Stickman
   layers:
   - Default
   - TransparentFX
