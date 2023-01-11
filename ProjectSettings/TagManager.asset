@@ -7,6 +7,7 @@ TagManager:
   - gate
   - playermanager
   - gate1
+  - enemy
   layers:
   - Default
   - TransparentFX

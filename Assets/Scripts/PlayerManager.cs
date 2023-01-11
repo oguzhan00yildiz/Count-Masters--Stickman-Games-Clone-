@@ -12,6 +12,15 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject stickman;
     [Range(0f,20f)] [SerializeField] private float DistanceFactor, Radius;
 
+    [SerializeField] private Transform enemy;
+    [SerializeField] private bool attack;
+    [SerializeField] private float DistancetoEnemy;
+    [SerializeField] private float fighttime=1f;
+    public PlayerMovement PlayerMovementscript;
+
+
+
+
     void Start()
     {
         player = transform;
@@ -26,8 +35,43 @@ public class PlayerManager : MonoBehaviour
     
     void Update()
     {
-        
+        if (attack)
+        {
+            //PlayerMovementscript.Playercanmove = false;
+            
+
+            var enemyDirection = new Vector3(enemy.position .x, transform.position.y,enemy.position.z)- transform.position;
+
+            for (int i = 1; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).rotation = Quaternion.Lerp(transform.GetChild(i).rotation ,Quaternion.LookRotation(enemyDirection, Vector3.up),Time.deltaTime *fighttime);
+            }
+
+            if (enemy.GetChild(1).childCount > 1)
+            {
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    var Distance = enemy.GetChild(1).GetChild(0).position - transform.GetChild(i).position;
+
+                    if (Distance.magnitude < DistancetoEnemy)
+                    {
+                        transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(enemy.GetChild(1).GetChild(0).position.x,transform.GetChild(i).position.y,
+                        enemy.GetChild(1).GetChild(0).position.z),Time.deltaTime *3f);
+                    }
+                }
+            }
+            
+        }
+        else
+        {
+            //PlayerMovementscript.PlayerSpeed=PlayerMovementscript.PlayerSpeed*4;
+            PlayerMovementscript.Playercanmove = true;
+        }
     }
+
+
+
+
     private void FormatStickman()
     {
         for (int i = 0; i < player.childCount; i++)
@@ -74,6 +118,23 @@ public class PlayerManager : MonoBehaviour
         }
 
         }
+
+        if (other.CompareTag("enemy"))
+        {
+            enemy = other.transform;
+            attack=true;
+            PlayerMovementscript.PlayerSpeed= 10;
+        }
         
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("enemy"))
+        {
+            
+            PlayerMovementscript.PlayerSpeed= 50;
+        }
     }
 }
