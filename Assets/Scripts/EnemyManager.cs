@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
     [Range(0f,20f)] [SerializeField] private float DistanceFactor, Radius;
 
     [SerializeField] private float enemtoplayerdistance=1.5f; 
+    [SerializeField] private float enemyfighttime = 3f; 
     public Transform enemy;
     public bool attack;
     
@@ -37,7 +38,7 @@ public class EnemyManager : MonoBehaviour
          for (int i = 0; i < transform.childCount; i++)
          {
             transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, Quaternion.LookRotation(EnemyDirection,Vector3.up),
-            Time.deltaTime*3f);
+            Time.deltaTime*enemyfighttime);
             
             var distance = enemy.GetChild(1).position - transform.GetChild(i).position;
 
