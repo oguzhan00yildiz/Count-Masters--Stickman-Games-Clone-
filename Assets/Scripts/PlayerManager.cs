@@ -17,6 +17,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float DistancetoEnemy;
     [SerializeField] private float fighttime=1f;
     public PlayerMovement PlayerMovementscript;
+    
+    public static PlayerManager PlayerManagerInstance;
 
 
 
@@ -28,6 +30,7 @@ public class PlayerManager : MonoBehaviour
 
         Countertxt.text = numberofstickman.ToString();
         
+        PlayerManagerInstance = this;
 
         
     }
@@ -72,7 +75,7 @@ public class PlayerManager : MonoBehaviour
 
 
 
-    private void FormatStickman()
+    public void FormatStickman()
     {
         for (int i = 0; i < player.childCount; i++)
         {
@@ -123,7 +126,7 @@ public class PlayerManager : MonoBehaviour
         {
             enemy = other.transform;
             attack=true;
-            PlayerMovementscript.PlayerSpeed= 10;
+            PlayerMovementscript.PlayerSpeed= -20;
             other.transform.GetChild(1).GetComponent<EnemyManager>().AttackThem(transform);
         }
         
@@ -135,7 +138,7 @@ public class PlayerManager : MonoBehaviour
         if (other.CompareTag("enemy"))
         {
             
-            PlayerMovementscript.PlayerSpeed= 50;
+            PlayerMovementscript.PlayerSpeed= -50;
             
         }
     }

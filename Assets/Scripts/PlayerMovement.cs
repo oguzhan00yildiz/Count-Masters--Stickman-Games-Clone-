@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     /*
     [SerializeField] private Rigidbody playerRB;
     */
-    [SerializeField] private GameObject Player;
+    [SerializeField] private GameObject Platform;
     
     [SerializeField] private CharacterController controller;
     private Vector3 direction;
@@ -20,8 +20,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<CharacterController>();
-        Player = gameObject;
+        controller =Platform.gameObject.GetComponent<CharacterController>();
+        
     }
 
     // Update is called once per frame

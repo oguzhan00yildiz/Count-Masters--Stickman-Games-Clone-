@@ -9,6 +9,7 @@ TagManager:
   - gate1
   - enemy
   - red
+  - ramp
   layers:
   - Default
   - TransparentFX
