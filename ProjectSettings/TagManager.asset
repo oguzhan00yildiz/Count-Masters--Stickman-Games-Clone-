@@ -8,6 +8,7 @@ TagManager:
   - playermanager
   - gate1
   - enemy
+  - red
   layers:
   - Default
   - TransparentFX

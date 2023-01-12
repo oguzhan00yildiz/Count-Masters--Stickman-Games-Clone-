@@ -124,6 +124,7 @@ public class PlayerManager : MonoBehaviour
             enemy = other.transform;
             attack=true;
             PlayerMovementscript.PlayerSpeed= 10;
+            other.transform.GetChild(1).GetComponent<EnemyManager>().AttackThem(transform);
         }
         
         
@@ -135,6 +136,7 @@ public class PlayerManager : MonoBehaviour
         {
             
             PlayerMovementscript.PlayerSpeed= 50;
+            
         }
     }
 }

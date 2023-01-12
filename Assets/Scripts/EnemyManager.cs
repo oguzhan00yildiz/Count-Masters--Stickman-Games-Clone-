@@ -9,6 +9,9 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject stickman;
     [Range(0f,20f)] [SerializeField] private float DistanceFactor, Radius;
 
+    [SerializeField] private float enemtoplayerdistance=1.5f; 
+    public Transform enemy;
+    public bool attack;
     
 
     void Start()
@@ -25,7 +28,26 @@ public class EnemyManager : MonoBehaviour
     
     void Update()
     {
-       
+       if (attack && transform.childCount > 1)
+       {
+        
+         var EnemyPos =new Vector3(enemy.position.x,transform.position.y,enemy.position.z);
+         var EnemyDirection = enemy.position - transform.position;
+
+         for (int i = 0; i < transform.childCount; i++)
+         {
+            transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, Quaternion.LookRotation(EnemyDirection,Vector3.up),
+            Time.deltaTime*3f);
+            
+            var distance = enemy.GetChild(1).position - transform.GetChild(i).position;
+
+            if (distance.magnitude < enemtoplayerdistance)
+            {
+                transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position,
+                enemy.GetChild(1).position, Time.deltaTime*2f);
+            }
+         }
+       }
     }
 
      private void FormatStickman()
@@ -37,6 +59,17 @@ public class EnemyManager : MonoBehaviour
             var NewPos = new Vector3(x,0.28f,z);
 
             transform.transform.GetChild(i).localPosition = NewPos;
+        }
+    }
+
+    public void AttackThem ( Transform enemyForce)
+    {
+
+        enemy = enemyForce;
+        attack=true;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            //düşman karakterin koşma animasyonunu alıştır.
         }
     }
 }
