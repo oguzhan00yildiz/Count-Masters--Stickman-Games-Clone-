@@ -26,7 +26,7 @@ public class ObstacleManager : MonoBehaviour
     {
         if(col.gameObject.tag == "Player")
         {
-            Debug.Log(col.gameObject.tag);
+            
             Destroy(col.gameObject);
         }
     }

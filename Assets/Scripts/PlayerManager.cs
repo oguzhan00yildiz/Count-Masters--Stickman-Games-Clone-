@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private bool attack;
     [SerializeField] private float DistancetoEnemy;
     [SerializeField] private float fighttime=1f;
+    public bool gameState;
     public PlayerMovement PlayerMovementscript;
     
     public static PlayerManager PlayerManagerInstance;
@@ -32,16 +33,18 @@ public class PlayerManager : MonoBehaviour
         
         PlayerManagerInstance = this;
         DOTween.SetTweensCapacity(2000, 100);
+        gameState=PlayerMovementscript.Playercanmove;
         
     }
 
     
     void Update()
     {
+        gameState=PlayerMovementscript.Playercanmove;
         if (attack)
         {
-            //PlayerMovementscript.Playercanmove = false;
-            
+            PlayerMovementscript.Playercanmove = false;
+            PlayerMovementscript.PlayerSpeed= -20;
 
             var enemyDirection = new Vector3(enemy.position .x, transform.position.y,enemy.position.z)- transform.position;
 
@@ -63,12 +66,35 @@ public class PlayerManager : MonoBehaviour
                     }
                 }
             }
+            else
+            {   
+                attack = false;
+                PlayerMovementscript.PlayerSpeed= -50;
+    
+                FormatStickman();
+                enemy.gameObject.SetActive(false);
+            
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    transform.GetChild(i).rotation = Quaternion.identity;
+                }
+            
+            }
+
+            if (transform.childCount==1)
+            {
+                enemy.transform.GetChild(1).GetComponent<EnemyManager>().StopAttack();
+                gameObject.SetActive(false);
+            }
             
         }
         else
         {
-            //PlayerMovementscript.PlayerSpeed=PlayerMovementscript.PlayerSpeed*4;
+            
+            
             PlayerMovementscript.Playercanmove = true;
+            
+            
         }
     }
 
@@ -83,7 +109,8 @@ public class PlayerManager : MonoBehaviour
             var z =DistanceFactor * Mathf.Sqrt(i) * Mathf.Sin(i*Radius);
             var NewPos = new Vector3(x,0.28f,z);
 
-            player.transform.GetChild(i).DOLocalMove(NewPos, 1f).SetEase(Ease.OutBack);
+            player.transform.GetChild(i).DOLocalMove(NewPos, 2f).SetEase(Ease.OutBack);
+            Countertxt.text = numberofstickman.ToString();
         }
     }
 
@@ -126,7 +153,7 @@ public class PlayerManager : MonoBehaviour
         {
             enemy = other.transform;
             attack=true;
-            PlayerMovementscript.PlayerSpeed= -20;
+            
             other.transform.GetChild(1).GetComponent<EnemyManager>().AttackThem(transform);
         }
         
@@ -138,7 +165,7 @@ public class PlayerManager : MonoBehaviour
         if (other.CompareTag("enemy"))
         {
             
-            PlayerMovementscript.PlayerSpeed= -50;
+            
             
         }
     }

@@ -411,7 +411,8 @@ MonoBehaviour:
   enemy: {fileID: 0}
   attack: 0
   DistancetoEnemy: 35
-  fighttime: 0.2
+  fighttime: 1
+  gameState: 0
   PlayerMovementscript: {fileID: 112612251}
 --- !u!54 &112612249
 Rigidbody:

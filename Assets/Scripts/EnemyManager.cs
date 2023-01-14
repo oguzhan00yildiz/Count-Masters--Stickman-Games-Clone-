@@ -39,14 +39,17 @@ public class EnemyManager : MonoBehaviour
          {
             transform.GetChild(i).rotation = Quaternion.Slerp(transform.GetChild(i).rotation, Quaternion.LookRotation(EnemyDirection,Vector3.up),
             Time.deltaTime*enemyfighttime);
-            
-            var distance = enemy.GetChild(1).position - transform.GetChild(i).position;
+            if (enemy.childCount > 1)
+            {
+               var distance = enemy.GetChild(1).position - transform.GetChild(i).position;
 
             if (distance.magnitude < enemtoplayerdistance)
             {
                 transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position,
                 enemy.GetChild(1).position, Time.deltaTime*2f);
+            } 
             }
+            
          }
        }
     }
@@ -72,5 +75,15 @@ public class EnemyManager : MonoBehaviour
         {
             //düşman karakterin koşma animasyonunu alıştır.
         }
+    }
+
+    public void StopAttack()
+    {
+       PlayerManager.PlayerManagerInstance.gameState =attack = false;
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            //transform.GetChild(i).GetComponent<>().SetBool("run",false);
+        }
+
     }
 }
