@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
         Countertxt.text = numberofstickman.ToString();
         
         PlayerManagerInstance = this;
-
+        DOTween.SetTweensCapacity(2000, 100);
         
     }
 

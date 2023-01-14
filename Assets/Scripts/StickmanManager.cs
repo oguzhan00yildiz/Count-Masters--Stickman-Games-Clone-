@@ -10,7 +10,7 @@ public class StickmanManager : MonoBehaviour
         
         if(other.CompareTag("ramp"))
         {
-            Debug.Log("collided with ramp");
+            
             transform.DOJump(transform.position, 25f, 1, 1f).SetEase(Ease.Flash).OnComplete(PlayerManager.PlayerManagerInstance.FormatStickman);
 
         }
