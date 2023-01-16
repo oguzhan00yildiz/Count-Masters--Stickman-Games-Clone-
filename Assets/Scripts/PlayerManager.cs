@@ -41,7 +41,8 @@ public class PlayerManager : MonoBehaviour
     
     void Update()
     {
-    
+        numberofstickman = transform.childCount-1;
+        Countertxt.text = numberofstickman.ToString();
 
         gameState=PlayerMovementscript.Playercanmove;
         if (attack)
@@ -137,7 +138,9 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
+    {   
+        
+
         if (other.CompareTag("gate"))
         {
             other.transform.parent.GetChild(0).GetComponent<BoxCollider>().enabled=false;

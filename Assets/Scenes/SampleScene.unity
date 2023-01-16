@@ -3275,7 +3275,7 @@ MonoBehaviour:
   DistanceFactor: 2
   Radius: 1
   enemtoplayerdistance: 50
-  enemyfighttime: 0.2
+  enemyfighttime: 1
   enemy: {fileID: 0}
   attack: 0
 --- !u!23 &1455662990
