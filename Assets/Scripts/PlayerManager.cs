@@ -116,7 +116,7 @@ public class PlayerManager : MonoBehaviour
 
     private void MakeStickman(int number)
     {
-        for (int i = 0; i < number; i++)
+        for (int i = numberofstickman; i < number; i++)
         {
             Instantiate(stickman,transform.position,Quaternion.identity,transform);
 
@@ -140,11 +140,11 @@ public class PlayerManager : MonoBehaviour
 
             if (gateManager.multiply)
         {
-            MakeStickman(numberofstickman* (gateManager.randomnumber-1));
+            MakeStickman(numberofstickman* (gateManager.randomnumber));
         }
         else
         {
-            MakeStickman((numberofstickman + gateManager.randomnumber)-2);
+            MakeStickman((numberofstickman + gateManager.randomnumber)-1);
         }
 
         }
