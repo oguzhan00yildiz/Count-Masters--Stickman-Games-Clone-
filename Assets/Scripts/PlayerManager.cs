@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
 {
     public Transform player;
     private int numberofstickman;
+    private int numbersofenemystickman;
     [SerializeField] private TextMeshPro Countertxt;
     [SerializeField] private GameObject stickman;
     [Range(0f,20f)] [SerializeField] private float DistanceFactor, Radius;
@@ -40,6 +41,8 @@ public class PlayerManager : MonoBehaviour
     
     void Update()
     {
+    
+
         gameState=PlayerMovementscript.Playercanmove;
         if (attack)
         {
@@ -72,12 +75,16 @@ public class PlayerManager : MonoBehaviour
                 PlayerMovementscript.PlayerSpeed= -50;
     
                 FormatStickman();
-                enemy.gameObject.SetActive(false);
+                
             
                 for (int i = 0; i < transform.childCount; i++)
                 {
                     transform.GetChild(i).rotation = Quaternion.identity;
                 }
+                
+                
+                    enemy.gameObject.SetActive(false);
+                
             
             }
 
@@ -155,18 +162,36 @@ public class PlayerManager : MonoBehaviour
             attack=true;
             
             other.transform.GetChild(1).GetComponent<EnemyManager>().AttackThem(transform);
+
+            StartCoroutine(UpdatetheNumbersOfPlayers());
         }
         
         
     }
 
-    private void OnTriggerExit(Collider other)
+    IEnumerator UpdatetheNumbersOfPlayers()
     {
-        if (other.CompareTag("enemy"))
+        numbersofenemystickman =enemy.transform.GetChild(1).childCount -1;
+        numberofstickman = transform.childCount-1;
+        
+
+        while (numbersofenemystickman >0 && numberofstickman > 0)
         {
-            
-            
-            
+            numbersofenemystickman --;
+            numberofstickman--;
+
+            enemy.transform.GetChild(1).GetComponent<EnemyManager>().Countertxt.text = numbersofenemystickman.ToString();
+            Countertxt.text = numberofstickman.ToString();
+
+            yield return null;
+        }
+
+        if (numbersofenemystickman ==0)
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).rotation = Quaternion.identity;
+            }
         }
     }
 }

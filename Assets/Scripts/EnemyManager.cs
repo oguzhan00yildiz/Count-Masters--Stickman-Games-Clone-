@@ -5,7 +5,7 @@ using TMPro;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro Countertxt;
+    public TextMeshPro Countertxt;
     [SerializeField] private GameObject stickman;
     [Range(0f,20f)] [SerializeField] private float DistanceFactor, Radius;
 
@@ -29,6 +29,7 @@ public class EnemyManager : MonoBehaviour
     
     void Update()
     {
+        
        if (attack && transform.childCount > 1)
        {
         
