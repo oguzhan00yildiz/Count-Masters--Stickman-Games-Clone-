@@ -19,7 +19,7 @@ public class ObstacleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.right * Time.deltaTime);   
+       
     }
 
     void OnTriggerEnter(Collider col)
