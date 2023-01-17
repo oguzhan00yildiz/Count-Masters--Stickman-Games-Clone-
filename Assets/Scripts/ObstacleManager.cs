@@ -19,7 +19,7 @@ public class ObstacleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     void OnTriggerEnter(Collider col)
@@ -29,5 +29,13 @@ public class ObstacleManager : MonoBehaviour
             
             Destroy(col.gameObject);
         }
+        StartCoroutine(ExecuteAfterTime(1));
+    }
+
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        PlayerManager.PlayerManagerInstance.FormatStickman();
     }
 }
