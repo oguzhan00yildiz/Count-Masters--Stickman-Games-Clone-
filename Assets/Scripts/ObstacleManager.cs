@@ -8,6 +8,8 @@ public class ObstacleManager : MonoBehaviour
     [SerializeField]private GameObject Obstacle;
     [SerializeField]private Rigidbody ObstacleRB;
     [SerializeField]private Transform ObstacleTransform;
+
+    [SerializeField]private float obstacleRotaitonSpeed = 50f;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,7 @@ public class ObstacleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       ObstacleTransform.Rotate(Vector3.up * obstacleRotaitonSpeed * Time.deltaTime, Space.Self);
     }
 
     void OnTriggerEnter(Collider col)
