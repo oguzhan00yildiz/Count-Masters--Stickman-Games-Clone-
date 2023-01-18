@@ -5,6 +5,9 @@ using UnityEngine;
 public class GateManager : MonoBehaviour
 {
     [SerializeField] private TextMesh gateno;
+
+    [SerializeField] private int lowerLimit = 10;
+    [SerializeField] private int higherLimit = 40;
     public int randomnumber;
 
     public bool multiply;
@@ -19,7 +22,7 @@ public class GateManager : MonoBehaviour
         }
         else
         {
-            randomnumber = Random.Range(10,100);
+            randomnumber = Random.Range(lowerLimit,higherLimit);
             gateno.text = "+" + randomnumber.ToString();
 
            
