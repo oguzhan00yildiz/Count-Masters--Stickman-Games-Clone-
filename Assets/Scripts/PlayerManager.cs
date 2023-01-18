@@ -59,7 +59,7 @@ public class PlayerManager : MonoBehaviour
 
             if (enemy.GetChild(1).childCount > 1)
             {
-                for (int i = 0; i < transform.childCount; i++)
+                for (int i = 1; i < transform.childCount; i++)
                 {
                     var Distance = enemy.GetChild(1).GetChild(0).position - transform.GetChild(i).position;
 
@@ -111,7 +111,7 @@ public class PlayerManager : MonoBehaviour
 
     public void FormatStickman()
     {
-        for (int i = 0; i < player.childCount; i++)
+        for (int i = 1; i < player.childCount; i++)
         {
             var x =DistanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i*Radius);
             var z =DistanceFactor * Mathf.Sqrt(i) * Mathf.Sin(i*Radius);
