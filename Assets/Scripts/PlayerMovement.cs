@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-   public float PlayerSpeed = 1f;
+   public float PlayerSpeed = 1f; 
+   
     [SerializeField] private float playerHorizontalSpeed = 10f;
     /*
     [SerializeField] private Rigidbody playerRB;
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {      if (Playercanmove)
         {
+            
             controller.Move(direction*Time.fixedDeltaTime);
         }
         
