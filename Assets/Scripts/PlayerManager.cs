@@ -17,12 +17,17 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private bool attack;
     [SerializeField] private float DistancetoEnemy;
     [SerializeField] private float fighttime=1f;
-    public bool gameState;
+    public bool moveByTouch, gameState;
     public PlayerMovement PlayerMovementscript;
     
     public static PlayerManager PlayerManagerInstance;
 
+    public SceneManager sceneManager;
 
+    public Camera camera;
+    private Vector3 mouseStartPos, playerStartPos;
+    public float playerSpeed, roadSpeed;
+    public Transform road;
 
 
     void Start()
@@ -34,8 +39,8 @@ public class PlayerManager : MonoBehaviour
         
         PlayerManagerInstance = this;
         DOTween.SetTweensCapacity(2000, 100);
-        gameState=PlayerMovementscript.Playercanmove;
-        
+        gameState = false;
+        camera = Camera.main;
     }
 
     
@@ -44,7 +49,7 @@ public class PlayerManager : MonoBehaviour
         numberofstickman = transform.childCount-1;
         Countertxt.text = numberofstickman.ToString();
 
-        gameState=PlayerMovementscript.Playercanmove;
+        //gameState=PlayerMovementscript.Playercanmove;
         if (attack)
         {
             PlayerMovementscript.Playercanmove = false;
@@ -73,6 +78,7 @@ public class PlayerManager : MonoBehaviour
             else
             {   
                 attack = false;
+                roadSpeed = -50f;
                 PlayerMovementscript.PlayerSpeed= -50;
     
                 FormatStickman();
@@ -99,14 +105,69 @@ public class PlayerManager : MonoBehaviour
         else
         {
             
-            
+            MoveThePlayer();
             PlayerMovementscript.Playercanmove = true;
             
             
         }
+        if (transform.childCount == 1)
+        {
+            gameState = false;
+        }
+        
+       
+        if (gameState&&sceneManager.GameStarted == true)
+        {
+          road.Translate(road.forward * Time.deltaTime * roadSpeed);
+        }  
     }
 
 
+
+    void MoveThePlayer()
+    {
+        if(Input.GetMouseButtonDown(0)&&gameState)
+        {
+            moveByTouch = true;
+
+            var plane = new Plane(Vector3.up, 0f);
+
+            var ray = camera.ScreenPointToRay(Input.mousePosition);
+
+            if(plane.Raycast(ray, out var distance))
+            {
+                mouseStartPos = ray.GetPoint(distance+1f);
+                playerStartPos = transform.position;
+            }
+        }
+
+        if(Input.GetMouseButtonUp(0))
+        {
+            moveByTouch = false;
+        }
+
+        if(moveByTouch)
+        {
+            var plane = new Plane(Vector3.up, 0f);
+            var ray = camera.ScreenPointToRay(Input.mousePosition);
+
+            if(plane.Raycast(ray, out var distance))
+            {
+                var mousePos = ray.GetPoint(distance + 1f);
+
+                var move = mousePos - mouseStartPos;
+                var control = playerStartPos + move;
+
+                if(numberofstickman > 50)
+                    control.x = Mathf.Clamp(control.x , -45.0f, 45.0f);
+                else
+                    control.x = Mathf.Clamp(control.x , -48.0f, 48.0f);
+
+                transform.position = new Vector3(Mathf.Lerp(transform.position.x,control.x,Time.deltaTime * playerSpeed)
+                    ,transform.position.y,transform.position.z);
+            }
+        }
+    }
 
 
     public void FormatStickman()
@@ -163,6 +224,8 @@ public class PlayerManager : MonoBehaviour
         {
             enemy = other.transform;
             attack=true;
+            roadSpeed = -20f;
+            
             
             other.transform.GetChild(1).GetComponent<EnemyManager>().AttackThem(transform);
 
