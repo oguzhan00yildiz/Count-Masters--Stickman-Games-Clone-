@@ -411,10 +411,16 @@ MonoBehaviour:
   Radius: 1
   enemy: {fileID: 0}
   attack: 0
-  DistancetoEnemy: 35
+  DistancetoEnemy: 50
   fighttime: 1
+  moveByTouch: 0
   gameState: 0
   PlayerMovementscript: {fileID: 112612251}
+  sceneManager: {fileID: 655049132}
+  camera: {fileID: 0}
+  playerSpeed: 10
+  roadSpeed: -50
+  road: {fileID: 1968126004}
 --- !u!54 &112612249
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -438,7 +444,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112612245}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cde23c6066d25745938949154afc343, type: 3}
   m_Name: 
@@ -448,7 +454,6 @@ MonoBehaviour:
   Platform: {fileID: 1968126003}
   controller: {fileID: 112612252}
   Playercanmove: 1
-  sceneManager: {fileID: 655049132}
 --- !u!143 &112612252
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5359,7 +5364,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.072
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviour
         
         PlayerManagerInstance = this;
         DOTween.SetTweensCapacity(2000, 100);
-        gameState = false;
+        gameState = true;
         camera = Camera.main;
     }
 
@@ -52,8 +52,11 @@ public class PlayerManager : MonoBehaviour
         //gameState=PlayerMovementscript.Playercanmove;
         if (attack)
         {
-            PlayerMovementscript.Playercanmove = false;
+            //PlayerMovementscript.Playercanmove = false;
+            gameState = false;
             PlayerMovementscript.PlayerSpeed= -20;
+
+            roadSpeed = -20;
 
             var enemyDirection = new Vector3(enemy.position .x, transform.position.y,enemy.position.z)- transform.position;
 
@@ -106,6 +109,7 @@ public class PlayerManager : MonoBehaviour
         {
             
             MoveThePlayer();
+            gameState=true;
             PlayerMovementscript.Playercanmove = true;
             
             
