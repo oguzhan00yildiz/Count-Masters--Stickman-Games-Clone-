@@ -10,7 +10,8 @@ public class EnemyManager : MonoBehaviour
     [Range(0f,20f)] [SerializeField] private float DistanceFactor, Radius;
 
     [SerializeField] private float enemtoplayerdistance=1.5f; 
-    [SerializeField] private float enemyfighttime = 3f; 
+    [SerializeField] private float enemyfighttime = 3f;
+    [SerializeField] private float enemycollidespeed =1f;  
     public Transform enemy;
     public bool attack;
     
@@ -29,7 +30,7 @@ public class EnemyManager : MonoBehaviour
     
     void Update()
     {
-        
+        Countertxt.text =(transform.childCount -1).ToString();
        if (attack && transform.childCount > 1)
        {
         
@@ -47,7 +48,7 @@ public class EnemyManager : MonoBehaviour
             if (distance.magnitude < enemtoplayerdistance)
             {
                 transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position,
-                enemy.GetChild(1).position, Time.deltaTime*2f);
+                enemy.GetChild(1).position, Time.deltaTime*enemycollidespeed);
             } 
             }
             

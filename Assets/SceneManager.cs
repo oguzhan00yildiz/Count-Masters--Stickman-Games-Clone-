@@ -34,8 +34,7 @@ public class SceneManager : MonoBehaviour
        }
 
        
-       Debug.Log(i);
-       Debug.Log(scaledfloat);
+       
     }
 
     public void ResumeGame()

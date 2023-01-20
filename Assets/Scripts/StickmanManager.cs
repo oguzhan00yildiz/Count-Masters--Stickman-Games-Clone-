@@ -5,6 +5,12 @@ using DG.Tweening;
 
 public class StickmanManager : MonoBehaviour
 {
+
+    Collider Scollider;
+     void Start()
+    {
+        Scollider = GetComponent<Collider>();
+    }
     void OnTriggerEnter(Collider other)
     {
         
@@ -17,11 +23,12 @@ public class StickmanManager : MonoBehaviour
 
         if (other.CompareTag("red") && other.transform.parent.childCount > 0)
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+             Scollider.enabled = false;
+             Destroy(gameObject);
+            
         }
 
-    
+        
     }
     
 }

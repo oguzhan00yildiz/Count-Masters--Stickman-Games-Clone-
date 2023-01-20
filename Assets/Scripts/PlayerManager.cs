@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private bool attack;
     [SerializeField] private float DistancetoEnemy;
     [SerializeField] private float fighttime=1f;
+    [SerializeField] private float playercollidespeed=1f;
     public bool moveByTouch, gameState;
     public PlayerMovement PlayerMovementscript;
     
@@ -48,6 +49,7 @@ public class PlayerManager : MonoBehaviour
     {
         numberofstickman = transform.childCount-1;
         Countertxt.text = numberofstickman.ToString();
+        
 
         //gameState=PlayerMovementscript.Playercanmove;
         if (attack)
@@ -74,7 +76,7 @@ public class PlayerManager : MonoBehaviour
                     if (Distance.magnitude < DistancetoEnemy)
                     {
                         transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(enemy.GetChild(1).GetChild(0).position.x,transform.GetChild(i).position.y,
-                        enemy.GetChild(1).GetChild(0).position.z),Time.deltaTime *3f);
+                        enemy.GetChild(1).GetChild(0).position.z),Time.deltaTime *playercollidespeed);
                     }
                 }
             }

@@ -10,6 +10,7 @@ TagManager:
   - enemy
   - red
   - ramp
+  - blue
   layers:
   - Default
   - TransparentFX
