@@ -366,7 +366,6 @@ GameObject:
   - component: {fileID: 112612247}
   - component: {fileID: 112612248}
   - component: {fileID: 112612249}
-  - component: {fileID: 112612251}
   - component: {fileID: 112612252}
   m_Layer: 0
   m_Name: Player
@@ -416,11 +415,10 @@ MonoBehaviour:
   playercollidespeed: 1
   moveByTouch: 0
   gameState: 0
-  PlayerMovementscript: {fileID: 112612251}
   sceneManager: {fileID: 655049132}
   camera: {fileID: 0}
   playerSpeed: 10
-  roadSpeed: -50
+  roadSpeed: -75
   road: {fileID: 1968126004}
 --- !u!54 &112612249
 Rigidbody:
@@ -438,23 +436,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &112612251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 112612245}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cde23c6066d25745938949154afc343, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerSpeed: -50
-  playerHorizontalSpeed: -30
-  Platform: {fileID: 1968126003}
-  controller: {fileID: 112612252}
-  Playercanmove: 1
 --- !u!143 &112612252
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3424,7 +3405,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249478526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.431181, y: 307.1563, z: 178.7}
+  m_LocalPosition: {x: -18.431181, y: 306.44, z: 178.7}
   m_LocalScale: {x: 30, y: 0.1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children:

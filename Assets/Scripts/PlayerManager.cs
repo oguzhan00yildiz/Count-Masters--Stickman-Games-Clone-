@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float fighttime=1f;
     [SerializeField] private float playercollidespeed=1f;
     public bool moveByTouch, gameState;
-    public PlayerMovement PlayerMovementscript;
+
     
     public static PlayerManager PlayerManagerInstance;
 
@@ -51,12 +51,12 @@ public class PlayerManager : MonoBehaviour
         Countertxt.text = numberofstickman.ToString();
         
 
-        //gameState=PlayerMovementscript.Playercanmove;
+        
         if (attack)
         {
-            //PlayerMovementscript.Playercanmove = false;
+            
             gameState = false;
-            PlayerMovementscript.PlayerSpeed= -20;
+            
 
             roadSpeed = -20;
 
@@ -83,8 +83,8 @@ public class PlayerManager : MonoBehaviour
             else
             {   
                 attack = false;
-                roadSpeed = -50f;
-                PlayerMovementscript.PlayerSpeed= -50;
+                roadSpeed = -75f;
+                
     
                 FormatStickman();
                 
@@ -112,7 +112,7 @@ public class PlayerManager : MonoBehaviour
             
             MoveThePlayer();
             gameState=true;
-            PlayerMovementscript.Playercanmove = true;
+            
             
             
         }
