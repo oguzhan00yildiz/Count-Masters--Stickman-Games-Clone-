@@ -6,36 +6,32 @@ using UnityEngine.UI;
 public class SceneManager : MonoBehaviour
 {
     public GameObject StartGamePanel;
-    [SerializeField] Transform Player;
-    [SerializeField] Transform EndLine;
-    [SerializeField] Image sliderimage;
-    private float scaledfloat;
-     private float i ;
-    
-    
+    [SerializeField] private Transform Player;
+    [SerializeField] private Transform EndLine;
+    [SerializeField] private Image sliderimage;
+    private float endlinefirstpos;
+    private float distance;
 
     public bool GameStarted = false;
     
     void Start()
     {
-
         PauseGame();
+
+         distance = (EndLine.position.z-Player.position.z);
+        endlinefirstpos = distance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        scaledfloat = (Player.position.z) / (EndLine.position.z - Player.position.z);
-       if (sliderimage.fillAmount < 1)
-       {
-    
-       
-            sliderimage.fillAmount = -scaledfloat; 
-       }
+        distance = (EndLine.position.z-Player.position.z);
 
-       
-       
+        sliderimage.fillAmount = 1-(distance / endlinefirstpos);
+        
     }
+
+
 
     public void ResumeGame()
     {
