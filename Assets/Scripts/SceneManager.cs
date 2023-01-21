@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SceneManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private Transform Player;
     [SerializeField] private Transform EndLine;
     [SerializeField] private Image sliderimage;
+
+    [SerializeField] private GameObject settingsPanel;
+    
     private float endlinefirstpos;
     private float distance;
 
@@ -18,8 +22,11 @@ public class SceneManager : MonoBehaviour
     {
         PauseGame();
 
+        settingsPanel.SetActive(false);
          distance = (EndLine.position.z-Player.position.z);
         endlinefirstpos = distance;
+
+
     }
 
     // Update is called once per frame
@@ -47,6 +54,18 @@ public class SceneManager : MonoBehaviour
     {
         GameStarted =false;
     }
+
+    public void OpenSettings()
+    {
+        settingsPanel.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        settingsPanel.SetActive(false);
+    }
+
+
 
    
 
