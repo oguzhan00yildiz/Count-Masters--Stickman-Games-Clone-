@@ -12,6 +12,9 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private Image sliderimage;
 
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private Button vibrationonbutton;
+    [SerializeField] private Button vibrationoffbutton;
+
     
     private float endlinefirstpos;
     private float distance;
@@ -64,6 +67,24 @@ public class SceneManager : MonoBehaviour
     {
         settingsPanel.SetActive(false);
     }
+
+    public void VibrationOn()
+    {
+    vibrationonbutton.gameObject.SetActive(false);
+    vibrationoffbutton.gameObject.SetActive(true);
+
+        //titreşimi aç
+    }
+
+    public void VibrationOff()
+    {
+    vibrationonbutton.gameObject.SetActive(true);
+    vibrationoffbutton.gameObject.SetActive(false);
+
+
+        //titreşimi kapat
+    }
+
 
 
 
