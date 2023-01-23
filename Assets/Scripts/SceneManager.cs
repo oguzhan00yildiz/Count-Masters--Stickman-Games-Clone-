@@ -12,8 +12,10 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private Image sliderimage;
 
     [SerializeField] private GameObject settingsPanel;
-    [SerializeField] private Button vibrationonbutton;
-    [SerializeField] private Button vibrationoffbutton;
+    [SerializeField] private Button vibrationOnButton;
+    [SerializeField] private Button vibrationOffButton;
+    [SerializeField] private Button soundOnButton;
+    [SerializeField] private Button soundOffButton;
 
     
     private float endlinefirstpos;
@@ -26,8 +28,10 @@ public class SceneManager : MonoBehaviour
         PauseGame();
 
         settingsPanel.SetActive(false);
-         distance = (EndLine.position.z-Player.position.z);
+        distance = (EndLine.position.z-Player.position.z);
         endlinefirstpos = distance;
+        soundOffButton.gameObject.SetActive(false);
+        vibrationOffButton.gameObject.SetActive(false);
 
 
     }
@@ -70,19 +74,35 @@ public class SceneManager : MonoBehaviour
 
     public void VibrationOn()
     {
-    vibrationonbutton.gameObject.SetActive(false);
-    vibrationoffbutton.gameObject.SetActive(true);
+        vibrationOnButton.gameObject.SetActive(false);
+        vibrationOffButton.gameObject.SetActive(true);
 
         //titreşimi aç
     }
 
     public void VibrationOff()
     {
-    vibrationonbutton.gameObject.SetActive(true);
-    vibrationoffbutton.gameObject.SetActive(false);
+        vibrationOnButton.gameObject.SetActive(true);
+        vibrationOffButton.gameObject.SetActive(false);
 
 
         //titreşimi kapat
+    }
+
+    public void SoundOn()
+    {
+        soundOnButton.gameObject.SetActive(false);
+        soundOffButton.gameObject.SetActive(true);
+
+        //ses aç
+    }
+
+    public void SoundOff()
+    {
+        soundOnButton.gameObject.SetActive(true);
+        soundOffButton.gameObject.SetActive(false);
+
+        //ses kapat
     }
 
 
