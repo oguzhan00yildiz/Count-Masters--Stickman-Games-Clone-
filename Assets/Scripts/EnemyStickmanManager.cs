@@ -6,6 +6,7 @@ public class EnemyStickmanManager : MonoBehaviour
 {
     int enemycollidenum=0;
     Collider enemycollider;
+
     void Start()
     {
         enemycollider = GetComponent<Collider>();

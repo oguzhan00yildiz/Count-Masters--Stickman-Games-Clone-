@@ -23,14 +23,14 @@ public class EnemyManager : MonoBehaviour
             Instantiate(stickman,transform.position,new Quaternion(0f,180f,0f,1f),transform);
         }
 
-        Countertxt.text =(transform.childCount -1).ToString();
+        Countertxt.text =(transform.childCount ).ToString();
         FormatStickman();
     }
 
     
     void Update()
     {
-        Countertxt.text =(transform.childCount -1).ToString();
+        Countertxt.text =(transform.childCount ).ToString();
        if (attack && transform.childCount > 1)
        {
         

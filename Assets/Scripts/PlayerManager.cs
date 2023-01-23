@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerManager : MonoBehaviour
 {
     public Transform player;
+    private Animator anim;
     public int numberofstickman;
     private int numbersofenemystickman;
     [SerializeField] private TextMeshPro Countertxt;
@@ -42,6 +43,8 @@ public class PlayerManager : MonoBehaviour
         DOTween.SetTweensCapacity(2000, 100);
         gameState = true;
         camera1 = Camera.main;
+
+        
     }
 
     
@@ -93,9 +96,11 @@ public class PlayerManager : MonoBehaviour
                 {
                     transform.GetChild(i).rotation = Quaternion.identity;
                 }
-                
-                
-                    enemy.gameObject.SetActive(false);
+                    anim=enemy.transform.GetComponent<Animator>();
+                    anim.SetBool("EnemyZoneanim",true);
+                    
+                    Destroy(enemy.gameObject,0.5f);
+                    //enemy.gameObject.SetActive(false);
                 
             
             }
