@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  numberofstickman: 0
   Countertxt: {fileID: 581482047}
   stickman: {fileID: 3643070564188342598, guid: 11aa75a991b96634db9968c80b432ce6, type: 3}
   DistanceFactor: 2
@@ -3005,6 +3006,7 @@ MonoBehaviour:
   EndLine: {fileID: 835160258}
   sliderimage: {fileID: 1842306676}
   settingsPanel: {fileID: 967597424}
+  tryAgainPanel: {fileID: 1248783897}
   vibrationOnButton: {fileID: 518042714}
   vibrationOffButton: {fileID: 1318290271}
   soundOnButton: {fileID: 1729249814}

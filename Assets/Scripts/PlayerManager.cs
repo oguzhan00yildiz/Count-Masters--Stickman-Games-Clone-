@@ -7,7 +7,7 @@ using TMPro;
 public class PlayerManager : MonoBehaviour
 {
     public Transform player;
-    private int numberofstickman;
+    public int numberofstickman;
     private int numbersofenemystickman;
     [SerializeField] private TextMeshPro Countertxt;
     [SerializeField] private GameObject stickman;

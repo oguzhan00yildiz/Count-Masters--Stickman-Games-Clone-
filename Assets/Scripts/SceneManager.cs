@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
@@ -12,10 +13,13 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private Image sliderimage;
 
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject tryAgainPanel;
     [SerializeField] private Button vibrationOnButton;
     [SerializeField] private Button vibrationOffButton;
     [SerializeField] private Button soundOnButton;
     [SerializeField] private Button soundOffButton;
+
+   
 
     
     private float endlinefirstpos;
@@ -41,15 +45,19 @@ public class SceneManager : MonoBehaviour
     {
         distance = (EndLine.position.z-Player.position.z);
 
-        sliderimage.fillAmount = 1-(distance / endlinefirstpos);
+        sliderimage.fillAmount = 1 - (distance / endlinefirstpos);
         
+        if(PlayerManager.PlayerManagerInstance.numberofstickman < 1)
+        {
+            StartCoroutine(TryAgainPanelUpdate());
+        }
     }
 
 
 
     public void ResumeGame()
     {
-        Time.timeScale =1;
+        Time.timeScale = 1;
 
         GameStarted = true;
         
@@ -59,7 +67,7 @@ public class SceneManager : MonoBehaviour
 
     public void PauseGame()
     {
-        GameStarted =false;
+        GameStarted = false;
     }
 
     public void OpenSettings()
@@ -107,8 +115,16 @@ public class SceneManager : MonoBehaviour
 
 
 
-
+    IEnumerator TryAgainPanelUpdate()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        tryAgainPanel.gameObject.SetActive(true);
+    }
    
+    public void RestartGame()
+    {
+        
+    }
 
     
 
