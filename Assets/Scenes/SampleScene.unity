@@ -417,7 +417,7 @@ MonoBehaviour:
   moveByTouch: 0
   gameState: 0
   sceneManager: {fileID: 655049132}
-  camera: {fileID: 0}
+  camera1: {fileID: 0}
   playerSpeed: 10
   roadSpeed: -75
   road: {fileID: 1968126004}
@@ -1307,7 +1307,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 384397783}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 655049132}
+        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &384397783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3007,6 +3019,7 @@ MonoBehaviour:
   sliderimage: {fileID: 1842306676}
   settingsPanel: {fileID: 967597424}
   tryAgainPanel: {fileID: 1248783897}
+  levelCompletedPanel: {fileID: 1551588381}
   vibrationOnButton: {fileID: 518042714}
   vibrationOffButton: {fileID: 1318290271}
   soundOnButton: {fileID: 1729249814}
@@ -8869,7 +8882,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1799205177}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 655049132}
+        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1799205177
 MonoBehaviour:
   m_ObjectHideFlags: 0

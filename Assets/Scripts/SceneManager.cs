@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class SceneManager : MonoBehaviour
 {
@@ -11,13 +10,16 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private Transform Player;
     [SerializeField] private Transform EndLine;
     [SerializeField] private Image sliderimage;
+    private float fillamount;
 
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject tryAgainPanel;
+    [SerializeField] private GameObject levelCompletedPanel;
     [SerializeField] private Button vibrationOnButton;
     [SerializeField] private Button vibrationOffButton;
     [SerializeField] private Button soundOnButton;
     [SerializeField] private Button soundOffButton;
+
 
    
 
@@ -34,6 +36,7 @@ public class SceneManager : MonoBehaviour
         settingsPanel.SetActive(false);
         distance = (EndLine.position.z-Player.position.z);
         endlinefirstpos = distance;
+        
         soundOffButton.gameObject.SetActive(false);
         vibrationOffButton.gameObject.SetActive(false);
 
@@ -45,12 +48,16 @@ public class SceneManager : MonoBehaviour
     {
         distance = (EndLine.position.z-Player.position.z);
 
-        sliderimage.fillAmount = 1 - (distance / endlinefirstpos);
+        fillamount= 1- (distance / endlinefirstpos);
+        sliderimage.fillAmount =  fillamount;
+        
         
         if(PlayerManager.PlayerManagerInstance.numberofstickman < 1)
         {
             StartCoroutine(TryAgainPanelUpdate());
         }
+
+        StartCoroutine(LevelCompletedPanelUpdate());
     }
 
 
@@ -123,7 +130,24 @@ public class SceneManager : MonoBehaviour
    
     public void RestartGame()
     {
+         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+
+    }
+
+    IEnumerator LevelCompletedPanelUpdate()
+    {
         
+
+        if (fillamount > 0.99f)
+        {
+            PlayerManager.PlayerManagerInstance.roadSpeed =0f;
+            PlayerManager.PlayerManagerInstance.playerSpeed=0f;
+
+            yield return new WaitForSecondsRealtime(2);
+            levelCompletedPanel.gameObject.SetActive(true);
+            
+            
+        }
     }
 
     

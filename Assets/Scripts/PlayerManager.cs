@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
 
     public SceneManager sceneManager;
 
-    public Camera camera;
+    public Camera camera1;
     private Vector3 mouseStartPos, playerStartPos;
     public float playerSpeed, roadSpeed;
     public Transform road;
@@ -41,7 +41,7 @@ public class PlayerManager : MonoBehaviour
         PlayerManagerInstance = this;
         DOTween.SetTweensCapacity(2000, 100);
         gameState = true;
-        camera = Camera.main;
+        camera1 = Camera.main;
     }
 
     
@@ -138,7 +138,7 @@ public class PlayerManager : MonoBehaviour
 
             var plane = new Plane(Vector3.up, 0f);
 
-            var ray = camera.ScreenPointToRay(Input.mousePosition);
+            var ray = camera1.ScreenPointToRay(Input.mousePosition);
 
             if(plane.Raycast(ray, out var distance))
             {
@@ -155,7 +155,7 @@ public class PlayerManager : MonoBehaviour
         if(moveByTouch)
         {
             var plane = new Plane(Vector3.up, 0f);
-            var ray = camera.ScreenPointToRay(Input.mousePosition);
+            var ray = camera1.ScreenPointToRay(Input.mousePosition);
 
             if(plane.Raycast(ray, out var distance))
             {
