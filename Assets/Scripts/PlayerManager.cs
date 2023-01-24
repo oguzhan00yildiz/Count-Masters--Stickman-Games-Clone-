@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float DistancetoEnemy;
     [SerializeField] private float fighttime=1f;
     [SerializeField] private float playercollidespeed=1f;
+    [SerializeField] private Transform TxtPrefab;
     public bool moveByTouch, gameState;
 
     
@@ -270,5 +271,10 @@ public class PlayerManager : MonoBehaviour
                 transform.GetChild(i).rotation = Quaternion.identity;
             }
         }
+    }
+
+    private void PopUpTxtHandler()
+    {
+        
     }
 }

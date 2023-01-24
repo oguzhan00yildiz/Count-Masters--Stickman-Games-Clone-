@@ -414,6 +414,7 @@ MonoBehaviour:
   DistancetoEnemy: 75
   fighttime: 1
   playercollidespeed: 1
+  TxtPrefab: {fileID: 0}
   moveByTouch: 0
   gameState: 0
   sceneManager: {fileID: 655049132}
