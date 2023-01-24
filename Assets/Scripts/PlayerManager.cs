@@ -6,28 +6,41 @@ using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
+    [Header ("Player Settings")]
+    
+    public float playerSpeed;
+    public float roadSpeed;
+    [Range(0f,20f)] [SerializeField] private float DistanceFactor, Radius;
+    [SerializeField] private float fighttime=1f;
+    [SerializeField] private float playercollidespeed=1f;
+    [SerializeField] private bool attack;
+    [Header ("---------------------------------------------------------------------------------------------------------------------------------------")]
+
+    [Header ("Player Assignments")]
     public Transform player;
     private Animator anim;
     public int numberofstickman;
-    private int numbersofenemystickman;
+    [SerializeField]private GameObject PopUpTxt;
     [SerializeField] private TextMeshPro Countertxt;
     [SerializeField] private GameObject stickman;
-    [Range(0f,20f)] [SerializeField] private float DistanceFactor, Radius;
+    [Header ("---------------------------------------------------------------------------------------------------------------------------------------")]
+    
+    [Header ("Enemy Relations")]
 
     [SerializeField] private Transform enemy;
-    [SerializeField] private bool attack;
     [SerializeField] private float DistancetoEnemy;
-    [SerializeField] private float fighttime=1f;
-    [SerializeField] private float playercollidespeed=1f;
+    [SerializeField] private int numbersofenemystickman;
+    [Header ("---------------------------------------------------------------------------------------------------------------------------------------")]
     
-    public bool moveByTouch, gameState;    
+    [Header ("Other Properties")]
+    
+    public bool moveByTouch;
+    public bool gameState;    
     public static PlayerManager PlayerManagerInstance;
     public SceneManager sceneManager;
     public Camera camera1;
     private Vector3 mouseStartPos, playerStartPos;
-    public float playerSpeed, roadSpeed;
     public Transform road;
-    [SerializeField]private GameObject PopUpTxt;
     private TextMeshPro PopUpCloneText;
     
 

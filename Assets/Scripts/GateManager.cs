@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class GateManager : MonoBehaviour
 {
-    [SerializeField] private TextMesh gateno;
-
+    [Header ("Gate Settings")]
     [SerializeField] private int lowerLimit = 10;
     [SerializeField] private int higherLimit = 40;
     public int randomnumber;
-
     public bool multiply;
+    [Header ("--------------------------------------------------------------------------------------------------------------------")]
+
+
+    [Header ("Gate Assignments")]
+    [SerializeField] private TextMesh gateno;
+    
 
 
     void Start()

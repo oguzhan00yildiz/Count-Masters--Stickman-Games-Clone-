@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ObstacleManager : MonoBehaviour
 {
+    [Header ("Obstacle Settings")]
+    [SerializeField]private float obstacleRotaitonSpeed = 50f;
+    [Header ("-----------------------------------------------------------------------------------------------------------------------------------------------------")]
 
+    [Header ("Obstacle Assignments")]
     [SerializeField]private GameObject Obstacle;
     [SerializeField]private Rigidbody ObstacleRB;
     [SerializeField]private Transform ObstacleTransform;
-
-    [SerializeField]private float obstacleRotaitonSpeed = 50f;
+    
     // Start is called before the first frame update
     void Start()
     {

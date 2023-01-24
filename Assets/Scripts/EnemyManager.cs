@@ -5,15 +5,24 @@ using TMPro;
 
 public class EnemyManager : MonoBehaviour
 {
-    public TextMeshPro Countertxt;
-    [SerializeField] private GameObject stickman;
-    [Range(0f,20f)] [SerializeField] private float DistanceFactor, Radius;
+    [Header ("Enemy Settings")]
+    [Range(0f,20f)] [SerializeField] private float DistanceFactor;
+    [Range(0f,20f)] [SerializeField] private float Radius;
+    [Header ("------------------------------------------------------------------------------------------------------------------------------------")]
 
+    [Header ("Player Relations")]
     [SerializeField] private float enemtoplayerdistance=1.5f; 
     [SerializeField] private float enemyfighttime = 3f;
-    [SerializeField] private float enemycollidespeed =1f;  
+    [SerializeField] private float enemycollidespeed =1f; 
+    [SerializeField] private GameObject stickman; 
+    [Header ("------------------------------------------------------------------------------------------------------------------------------------")]
+
+    [Header ("Other Properties")]
+    public TextMeshPro Countertxt;
+    
     public Transform enemy;
     public bool attack;
+    
     
 
     void Start()

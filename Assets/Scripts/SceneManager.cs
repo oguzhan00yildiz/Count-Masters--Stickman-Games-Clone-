@@ -6,12 +6,12 @@ using TMPro;
 
 public class SceneManager : MonoBehaviour
 {
+    [Header("Scene Assignments")]
+    [SerializeField] private float fillamount;
     public GameObject StartGamePanel;
     [SerializeField] private Transform Player;
     [SerializeField] private Transform EndLine;
     [SerializeField] private Image sliderimage;
-    private float fillamount;
-
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject tryAgainPanel;
     [SerializeField] private GameObject levelCompletedPanel;
