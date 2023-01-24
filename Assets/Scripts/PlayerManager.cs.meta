@@ -3,7 +3,15 @@ guid: 5819d5fb5061f0d4db9e45258967d115
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {instanceID: 0}
+  - Countertxt: {instanceID: 0}
+  - stickman: {instanceID: 0}
+  - enemy: {instanceID: 0}
+  - TxtPrefab: {fileID: 1534393995370355787, guid: d76c7801783eea44b987995644832323, type: 3}
+  - sceneManager: {instanceID: 0}
+  - camera1: {instanceID: 0}
+  - road: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
