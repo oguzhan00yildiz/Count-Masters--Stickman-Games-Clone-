@@ -421,6 +421,7 @@ MonoBehaviour:
   playerSpeed: 10
   roadSpeed: -75
   road: {fileID: 1968126004}
+  PopUpTxt: {fileID: 4336373375044724358, guid: bbddfcebb2b6d9d4b8e81f9709788a35, type: 3}
 --- !u!54 &112612249
 Rigidbody:
   m_ObjectHideFlags: 0

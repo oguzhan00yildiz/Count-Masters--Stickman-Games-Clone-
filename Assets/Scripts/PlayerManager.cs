@@ -19,18 +19,17 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float DistancetoEnemy;
     [SerializeField] private float fighttime=1f;
     [SerializeField] private float playercollidespeed=1f;
-    public bool moveByTouch, gameState;
-
     
+    public bool moveByTouch, gameState;    
     public static PlayerManager PlayerManagerInstance;
-
     public SceneManager sceneManager;
-
     public Camera camera1;
     private Vector3 mouseStartPos, playerStartPos;
     public float playerSpeed, roadSpeed;
     public Transform road;
-
+    [SerializeField]private GameObject PopUpTxt;
+    private TextMeshPro PopUpCloneText;
+    
 
     void Start()
     {
@@ -221,13 +220,15 @@ public class PlayerManager : MonoBehaviour
             var gateManager = other.GetComponent<GateManager>();
 
             if (gateManager.multiply)
-        {
-            MakeStickman(numberofstickman* (gateManager.randomnumber));
-        }
-        else
-        {
-            MakeStickman((numberofstickman + gateManager.randomnumber)-1);
-        }
+            {
+                MakeStickman(numberofstickman* (gateManager.randomnumber));
+                PopUpTxtHandler(gateManager.randomnumber.ToString()+"x");
+            }
+            else
+            {
+                MakeStickman((numberofstickman + gateManager.randomnumber)-1);
+                PopUpTxtHandler("+"+(gateManager.randomnumber-1).ToString());
+            }
 
         }
 
@@ -270,5 +271,12 @@ public class PlayerManager : MonoBehaviour
                 transform.GetChild(i).rotation = Quaternion.identity;
             }
         }
+    }
+
+    public void PopUpTxtHandler(string generatedNumber)
+    {
+        GameObject PopUpClone = Instantiate(PopUpTxt, transform.position, Quaternion.identity);
+        PopUpCloneText = PopUpClone.transform.GetChild(0).GetComponent<TextMeshPro>();
+        PopUpCloneText.text = generatedNumber;
     }
 }
