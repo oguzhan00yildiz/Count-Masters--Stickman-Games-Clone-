@@ -13,7 +13,9 @@ public class PlayerManager : MonoBehaviour
     [Range(0f,20f)] [SerializeField] private float DistanceFactor, Radius;
     [SerializeField] private float fighttime=1f;
     [SerializeField] private float playercollidespeed=1f;
-    [SerializeField] private bool attack;
+    [SerializeField] private bool attack=false;
+    [SerializeField] private bool attackboss=false;
+    [SerializeField] private bool bosszone;
     [Header ("---------------------------------------------------------------------------------------------------------------------------------------")]
 
     [Header ("Player Assignments")]
@@ -21,6 +23,7 @@ public class PlayerManager : MonoBehaviour
     private Animator anim;
     public int numberofstickman;
     [SerializeField]private GameObject PopUpTxt;
+    [SerializeField]private Rigidbody rb;
     [SerializeField] private TextMeshPro Countertxt;
     [SerializeField] private GameObject stickman;
     [Header ("---------------------------------------------------------------------------------------------------------------------------------------")]
@@ -28,7 +31,9 @@ public class PlayerManager : MonoBehaviour
     [Header ("Enemy Relations")]
 
     [SerializeField] private Transform enemy;
+    [SerializeField] private Transform boss;
     [SerializeField] private float DistancetoEnemy;
+    [SerializeField] private float DistancetoBoss;
     [SerializeField] private int numbersofenemystickman;
     [Header ("---------------------------------------------------------------------------------------------------------------------------------------")]
     
@@ -42,6 +47,8 @@ public class PlayerManager : MonoBehaviour
     private Vector3 mouseStartPos, playerStartPos;
     public Transform road;
     private TextMeshPro PopUpCloneText;
+    
+    
     
 
     void Start()
@@ -57,15 +64,29 @@ public class PlayerManager : MonoBehaviour
         camera1 = Camera.main;
 
         
+        
     }
 
     
     void Update()
     {
+        if (attackboss ==false && attack==false)
+        {
+            for (int i = 1; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).transform.GetComponent<Rigidbody>().isKinematic=true;
+            }
+        }
+        else
+        {
+            for (int i = 1; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).transform.GetComponent<Rigidbody>().isKinematic=false;
+            }
+        }
+
         numberofstickman = transform.childCount-1;
         Countertxt.text = numberofstickman.ToString();
-        
-
         
         if (attack)
         {
@@ -90,6 +111,7 @@ public class PlayerManager : MonoBehaviour
 
                     if (Distance.magnitude < DistancetoEnemy)
                     {
+                        
                         transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(enemy.GetChild(1).GetChild(0).position.x,transform.GetChild(i).position.y,
                         enemy.GetChild(1).GetChild(0).position.z),Time.deltaTime *playercollidespeed);
                     }
@@ -102,6 +124,7 @@ public class PlayerManager : MonoBehaviour
                 
     
                 FormatStickman();
+                
                 
             
                 for (int i = 0; i < transform.childCount; i++)
@@ -143,6 +166,38 @@ public class PlayerManager : MonoBehaviour
         {
           road.Translate(road.forward * Time.deltaTime * roadSpeed);
         }  
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------
+        if(bosszone)
+        {
+            gameState = false;
+            roadSpeed = -10;
+
+            var bossDirection = new Vector3(boss.position .x, transform.position.y,boss.position.z)- transform.position;
+
+            for (int i = 1; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).rotation = Quaternion.Lerp(transform.GetChild(i).rotation ,Quaternion.LookRotation(bossDirection, Vector3.up),Time.deltaTime *fighttime);
+            }
+        }
+
+
+        if (attackboss)
+            {
+                for (int i = 1; i < transform.childCount; i++)
+                {
+                    var Distance = boss.GetChild(0).position - transform.GetChild(i).position;
+
+                    if (Distance.magnitude < DistancetoBoss)
+                    {
+                        
+
+                        transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(boss.GetChild(0).position.x,transform.GetChild(i).position.y,
+                        boss.GetChild(0).position.z),Time.deltaTime *playercollidespeed);
+                    }
+                }
+            }
+
+
     }
 
 
@@ -195,8 +250,12 @@ public class PlayerManager : MonoBehaviour
 
     public void FormatStickman()
     {
+        
+
+        
         for (int i = 1; i < player.childCount; i++)
         {
+            
             var x =DistanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i*Radius);
             var z =DistanceFactor * Mathf.Sqrt(i) * Mathf.Sin(i*Radius);
             var NewPos = new Vector3(x,0.28f,z);
@@ -218,6 +277,7 @@ public class PlayerManager : MonoBehaviour
         Countertxt.text = numberofstickman.ToString();
 
         FormatStickman();
+        
 
     }
 
@@ -256,6 +316,25 @@ public class PlayerManager : MonoBehaviour
 
             StartCoroutine(UpdatetheNumbersOfPlayers());
         }
+
+        if (other.CompareTag("bosszone"))
+        {
+            boss = other.transform;
+            roadSpeed = -10f;
+            bosszone=true;
+
+
+
+
+            
+        }
+
+        if (other.CompareTag("bosszone"))
+        {
+            attackboss=true;
+        }
+
+
         
         
     }
