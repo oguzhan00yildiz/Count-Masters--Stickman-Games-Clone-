@@ -5,16 +5,11 @@ using DG.Tweening;
 
 public class StickmanManager : MonoBehaviour
 {
-    public Rigidbody rb;
 
     Collider Scollider;
-
-
-    
      void Start()
     {
         Scollider = GetComponent<Collider>();
-        
     }
     void OnTriggerEnter(Collider other)
     {
@@ -35,7 +30,5 @@ public class StickmanManager : MonoBehaviour
 
         
     }
-
-    
     
 }
