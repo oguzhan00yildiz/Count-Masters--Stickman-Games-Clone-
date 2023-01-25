@@ -11,6 +11,8 @@ TagManager:
   - red
   - ramp
   - blue
+  - boss
+  - bosszone
   layers:
   - Default
   - TransparentFX
