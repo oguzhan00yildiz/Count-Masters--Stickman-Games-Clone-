@@ -7,7 +7,7 @@ using TMPro;
 public class SceneManager : MonoBehaviour
 {
     [Header("Scene Assignments")]
-    [SerializeField] private float fillamount;
+    [SerializeField] public float fillamount;
     public GameObject StartGamePanel;
     [SerializeField] private Transform Player;
     [SerializeField] private Transform EndLine;
@@ -19,6 +19,7 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private Button vibrationOffButton;
     [SerializeField] private Button soundOnButton;
     [SerializeField] private Button soundOffButton;
+    public static SceneManager SceneManagerInstance;
 
 
    
@@ -39,7 +40,7 @@ public class SceneManager : MonoBehaviour
         
         soundOffButton.gameObject.SetActive(false);
         vibrationOffButton.gameObject.SetActive(false);
-
+        SceneManagerInstance = this;
 
     }
 
@@ -143,7 +144,7 @@ public class SceneManager : MonoBehaviour
             PlayerManager.PlayerManagerInstance.roadSpeed =0f;
             PlayerManager.PlayerManagerInstance.playerSpeed=0f;
 
-            yield return new WaitForSecondsRealtime(2);
+            yield return new WaitForSecondsRealtime(5);
             levelCompletedPanel.gameObject.SetActive(true);
             
             
