@@ -6,13 +6,15 @@ public class CameraController : MonoBehaviour
 {
     private Animator animator;
     private bool isMainCam = true;
-    // Start is called before the first frame update
+
+
+    
     void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         SwitchCamera();
@@ -20,7 +22,7 @@ public class CameraController : MonoBehaviour
 
     void SwitchCamera() 
     {
-        if(SceneManager.SceneManagerInstance.fillamount > 0.99f)
+        if (PlayerManager.PlayerManagerInstance.bosszone==true)
         {
             animator.Play("BossCam");
         }

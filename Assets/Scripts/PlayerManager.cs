@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float playercollidespeed=1f;
     [SerializeField] private bool attack=false;
     [SerializeField] private bool attackboss=false;
-    [SerializeField] private bool bosszone;
+    [SerializeField] public bool bosszone;
     [Header ("---------------------------------------------------------------------------------------------------------------------------------------")]
 
     [Header ("Player Assignments")]
