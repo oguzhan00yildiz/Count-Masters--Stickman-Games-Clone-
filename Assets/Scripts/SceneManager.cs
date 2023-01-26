@@ -144,7 +144,7 @@ public class SceneManager : MonoBehaviour
             PlayerManager.PlayerManagerInstance.roadSpeed =0f;
             PlayerManager.PlayerManagerInstance.playerSpeed=0f;
 
-            yield return new WaitForSecondsRealtime(5);
+            yield return new WaitForSecondsRealtime(2f);
             levelCompletedPanel.gameObject.SetActive(true);
             
             
