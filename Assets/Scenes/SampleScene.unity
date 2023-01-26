@@ -6900,6 +6900,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6caeea65bc567d240b854f388413ce34, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4501c91223889c84587ce94a4a0ffb97, type: 2}
     - target: {fileID: 919132149155446097, guid: 6caeea65bc567d240b854f388413ce34, type: 3}
       propertyPath: m_Name
       value: platformbitis
@@ -8789,7 +8793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f0e87dbd9e3b3842b035de4c58406bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 299.77524
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f0e87dbd9e3b3842b035de4c58406bb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9383,7 +9387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6de0c601171d3b041bc65af87ddb0f30, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 300.00354
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6de0c601171d3b041bc65af87ddb0f30, type: 3}
       propertyPath: m_LocalPosition.z
