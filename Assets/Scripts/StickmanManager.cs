@@ -27,8 +27,17 @@ public class StickmanManager : MonoBehaviour
              Destroy(gameObject);
             
         }
-
+        
+        if (other.CompareTag("bosshealth"))
+        {
+            BossManager.bossManager.BossGetDamage();
+            
+            Destroy(gameObject);
+        }
+        
         
     }
+
+
     
 }

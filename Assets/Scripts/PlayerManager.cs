@@ -183,7 +183,8 @@ public class PlayerManager : MonoBehaviour
 
         if (attackboss)
             {
-                for (int i = 1; i < transform.childCount; i++)
+                if(boss.childCount > 0)
+                {for (int i = 1; i < transform.childCount; i++)
                 {
                     var Distance = boss.GetChild(0).position - transform.GetChild(i).position;
 
@@ -195,7 +196,13 @@ public class PlayerManager : MonoBehaviour
                         boss.GetChild(0).position.z),Time.deltaTime *playercollidespeed);
                     }
                 }
+                }
+                else
+                {
+                    attackboss=false;
+                }
             }
+            
 
 
     }
@@ -338,6 +345,8 @@ public class PlayerManager : MonoBehaviour
         
         
     }
+
+    
 
     IEnumerator UpdatetheNumbersOfPlayers()
     {

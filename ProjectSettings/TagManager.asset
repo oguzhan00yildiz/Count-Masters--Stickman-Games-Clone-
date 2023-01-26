@@ -11,6 +11,9 @@ TagManager:
   - red
   - ramp
   - blue
+  - bosszone
+  - boss
+  - bosshealth
   layers:
   - Default
   - TransparentFX
