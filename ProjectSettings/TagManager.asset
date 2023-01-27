@@ -14,6 +14,7 @@ TagManager:
   - bosszone
   - boss
   - bosshealth
+  - bat
   layers:
   - Default
   - TransparentFX

@@ -6,10 +6,12 @@ public class EnemyStickmanManager : MonoBehaviour
 {
     int enemycollidenum=0;
     Collider enemycollider;
+    private Animator Redanim;
 
     void Start()
     {
         enemycollider = GetComponent<Collider>();
+        Redanim = GetComponent<Animator>();
     }
 
     
@@ -23,5 +25,18 @@ public class EnemyStickmanManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+    }
+
+    private void Update() 
+    {
+        if ( EnemyManager.enemyManagerInstance.attack )
+        {
+             Redanim.SetBool("RedRun",true);
+
+        }
+        else
+        {
+            Redanim.SetBool("RedRun",false);
+        }
     }
 }

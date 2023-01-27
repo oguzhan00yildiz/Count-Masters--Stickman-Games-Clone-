@@ -35,6 +35,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float DistancetoEnemy;
     [SerializeField] private float DistancetoBoss;
     [SerializeField] private int numbersofenemystickman;
+   
     [Header ("---------------------------------------------------------------------------------------------------------------------------------------")]
     
     [Header ("Other Properties")]
@@ -70,6 +71,7 @@ public class PlayerManager : MonoBehaviour
     
     void Update()
     {
+
         if (attackboss ==false && attack==false)
         {
             for (int i = 1; i < transform.childCount; i++)
@@ -109,12 +111,19 @@ public class PlayerManager : MonoBehaviour
                 {
                     var Distance = enemy.GetChild(1).GetChild(0).position - transform.GetChild(i).position;
 
+                    
+                    
+                        
+                    
+
                     if (Distance.magnitude < DistancetoEnemy)
                     {
                         
                         transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(enemy.GetChild(1).GetChild(0).position.x,transform.GetChild(i).position.y,
                         enemy.GetChild(1).GetChild(0).position.z),Time.deltaTime *playercollidespeed);
                     }
+                    
+
                 }
             }
             else
@@ -170,7 +179,7 @@ public class PlayerManager : MonoBehaviour
         if(bosszone)
         {
             gameState = false;
-            roadSpeed = -10;
+            roadSpeed = -5;
 
             var bossDirection = new Vector3(boss.position .x, transform.position.y,boss.position.z)- transform.position;
 
@@ -193,7 +202,7 @@ public class PlayerManager : MonoBehaviour
                         
 
                         transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(boss.GetChild(0).position.x,transform.GetChild(i).position.y,
-                        boss.GetChild(0).position.z),Time.deltaTime *playercollidespeed);
+                        boss.GetChild(0).position.z),Time.deltaTime *(playercollidespeed/2));
                     }
                 }
                 }
@@ -327,7 +336,7 @@ public class PlayerManager : MonoBehaviour
         if (other.CompareTag("bosszone"))
         {
             boss = other.transform;
-            roadSpeed = -10f;
+            roadSpeed = -5f;
             bosszone=true;
 
 

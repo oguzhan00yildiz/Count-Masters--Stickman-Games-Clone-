@@ -22,6 +22,8 @@ public class EnemyManager : MonoBehaviour
     
     public Transform enemy;
     public bool attack;
+
+    public static EnemyManager enemyManagerInstance;
     
     
 
@@ -34,6 +36,7 @@ public class EnemyManager : MonoBehaviour
 
         Countertxt.text =(transform.childCount ).ToString();
         FormatStickman();
+        enemyManagerInstance=this;
     }
 
     

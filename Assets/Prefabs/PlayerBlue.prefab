@@ -341,6 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ee9614a1fdfe3a4eac4681737960b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBossAttacking: 0
 --- !u!54 &406473002689255520
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -356,7 +357,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &1599791371750644372
 CapsuleCollider:
   m_ObjectHideFlags: 0

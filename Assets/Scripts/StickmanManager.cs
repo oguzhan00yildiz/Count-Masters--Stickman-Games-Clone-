@@ -8,12 +8,15 @@ public class StickmanManager : MonoBehaviour
 
     Collider Scollider;
     public bool isBossAttacking;
+    public Animator blueanim;
+    
 
     public static StickmanManager stickmanManagerInstance;
     void Start()
     {
         Scollider = GetComponent<Collider>();
         stickmanManagerInstance = this;
+        blueanim = GetComponent<Animator>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -36,11 +39,30 @@ public class StickmanManager : MonoBehaviour
         if (other.CompareTag("bosshealth"))
         {
             isBossAttacking = true;
-            BossManager.bossManager.BossGetDamage();
+
+            BossManager.bossManagerInstance.BossGetDamage();
+            
+            
             
             Destroy(gameObject);
         }
+
+    
           
+        
+    }
+
+    void Update()
+    {
+        if ( SceneManager.SceneManagerInstance.GameStarted & BossManager.bossManagerInstance.isbossdead== false)
+        {
+            blueanim.SetBool("PlayerMoving",true);
+        }
+        else 
+        {
+            blueanim.SetBool("PlayerMoving",false);
+        }
+
         
     }
 
