@@ -11,13 +11,14 @@ public class BossManager : MonoBehaviour
     [SerializeField] private Image sliderimage;
     [SerializeField] private float fillamount;
     public static BossManager bossManager;
-
+    public Animator animator;
     
     void Start()
     {
         currenthealth=bossHealth;
         sliderimage = transform.parent.GetChild(1).GetChild(0).GetChild(0).GetComponent<Image>();
         bossManager=this;
+       
     }
 
     
@@ -30,6 +31,9 @@ public class BossManager : MonoBehaviour
         {
             Destroy(transform.parent.gameObject);
         }
+
+        StartCoroutine(BossRun());
+        
     }
 
     public void BossGetDamage()
@@ -37,7 +41,20 @@ public class BossManager : MonoBehaviour
         currenthealth = currenthealth -1;
     }
 
-   
+   IEnumerator BossRun()
+   {
+        if(PlayerManager.PlayerManagerInstance.bosszone)
+        {
+            animator.SetBool("StartRun",true);
+            yield return new WaitForSeconds(1f);
+            animator.SetBool("IsBossAttacking",true);
+        }
+        else
+        {
+            animator.SetBool("StartRun", false);
+            animator.SetBool("IsBossAttacking",false);
+        }
+   }
 
     
 }

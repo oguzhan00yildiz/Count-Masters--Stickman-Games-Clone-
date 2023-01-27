@@ -7,10 +7,15 @@ public class StickmanManager : MonoBehaviour
 {
 
     Collider Scollider;
-     void Start()
+    public bool isBossAttacking;
+
+    public static StickmanManager stickmanManagerInstance;
+    void Start()
     {
         Scollider = GetComponent<Collider>();
+        stickmanManagerInstance = this;
     }
+
     void OnTriggerEnter(Collider other)
     {
         
@@ -30,11 +35,12 @@ public class StickmanManager : MonoBehaviour
         
         if (other.CompareTag("bosshealth"))
         {
+            isBossAttacking = true;
             BossManager.bossManager.BossGetDamage();
             
             Destroy(gameObject);
         }
-        
+          
         
     }
 
