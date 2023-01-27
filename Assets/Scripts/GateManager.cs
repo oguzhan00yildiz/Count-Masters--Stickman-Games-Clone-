@@ -43,5 +43,15 @@ public class GateManager : MonoBehaviour
         
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("blue"))
+        {   
+            transform.parent.GetChild(1).GetChild(0).transform.gameObject.SetActive(false);
+            transform.parent.GetChild(0).GetChild(0).transform.gameObject.SetActive(false);
+        }
+        
+    }
+
 
 }

@@ -343,6 +343,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBossAttacking: 0
   blueanim: {fileID: 0}
+  smokeeffect: {fileID: 5394683061290479735, guid: bd2b49953e98ab047aef896579c7ee3b, type: 3}
+  bloodsplashblue: {fileID: 5394683061290479735, guid: bd2b49953e98ab047aef896579c7ee3b, type: 3}
 --- !u!54 &406473002689255520
 Rigidbody:
   m_ObjectHideFlags: 0

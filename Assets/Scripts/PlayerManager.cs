@@ -96,7 +96,7 @@ public class PlayerManager : MonoBehaviour
             gameState = false;
             
 
-            roadSpeed = -20;
+            roadSpeed = -40;
 
             var enemyDirection = new Vector3(enemy.position .x, transform.position.y,enemy.position.z)- transform.position;
 
@@ -168,6 +168,7 @@ public class PlayerManager : MonoBehaviour
         if (transform.childCount == 1)
         {
             gameState = false;
+            transform.GetChild(0).transform.gameObject.SetActive(false);
         }
         
        
@@ -252,10 +253,26 @@ public class PlayerManager : MonoBehaviour
                 var move = mousePos - mouseStartPos;
                 var control = playerStartPos + move;
 
-                if(numberofstickman > 50)
-                    control.x = Mathf.Clamp(control.x , -45.0f, 45.0f);
-                else
-                    control.x = Mathf.Clamp(control.x , -48.0f, 48.0f);
+                    if(1 <= numberofstickman && numberofstickman < 10)
+                    control.x = Mathf.Clamp(control.x , -24.5f, 60.0f);
+                    else if(10 <= numberofstickman && numberofstickman < 20)
+                    control.x = Mathf.Clamp(control.x , -15, 51);
+                    else if(20 <= numberofstickman && numberofstickman < 30)
+                    control.x = Mathf.Clamp(control.x , -11, 47);
+                    else if(30 <= numberofstickman && numberofstickman < 40)
+                    control.x = Mathf.Clamp(control.x , -7, 43);
+                    else if(40 <= numberofstickman && numberofstickman < 50)
+                    control.x = Mathf.Clamp(control.x , -6, 42);
+                    else if(50 <= numberofstickman && numberofstickman < 60)
+                    control.x = Mathf.Clamp(control.x , 0, 36);
+                    else
+                    {
+                      control.x = Mathf.Clamp(control.x , 0, 36);  
+                    }
+
+
+
+                    
 
                 transform.position = new Vector3(Mathf.Lerp(transform.position.x,control.x,Time.deltaTime * playerSpeed)
                     ,transform.position.y,transform.position.z);
@@ -325,7 +342,7 @@ public class PlayerManager : MonoBehaviour
         {
             enemy = other.transform;
             attack=true;
-            roadSpeed = -20f;
+            roadSpeed = -40f;
             
             
             other.transform.GetChild(1).GetComponent<EnemyManager>().AttackThem(transform);
