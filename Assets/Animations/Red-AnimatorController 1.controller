@@ -56,7 +56,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Red-AnimatorController
+  m_Name: Red-AnimatorController 1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: RedRun

@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Transform boss;
     [SerializeField] private float DistancetoEnemy;
     [SerializeField] private float DistancetoBoss;
-    [SerializeField] private int numbersofenemystickman;
+    [SerializeField] public int numbersofenemystickman;
    
     [Header ("---------------------------------------------------------------------------------------------------------------------------------------")]
     
@@ -203,7 +203,7 @@ public class PlayerManager : MonoBehaviour
                         
 
                         transform.GetChild(i).position = Vector3.Lerp(transform.GetChild(i).position, new Vector3(boss.GetChild(0).position.x,transform.GetChild(i).position.y,
-                        boss.GetChild(0).position.z),Time.deltaTime *(playercollidespeed/2));
+                        boss.GetChild(0).position.z),Time.deltaTime *(playercollidespeed/5));
                     }
                 }
                 }
@@ -292,9 +292,13 @@ public class PlayerManager : MonoBehaviour
             var x =DistanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i*Radius);
             var z =DistanceFactor * Mathf.Sqrt(i) * Mathf.Sin(i*Radius);
             var NewPos = new Vector3(x,0.28f,z);
-
-            player.transform.GetChild(i).DOLocalMove(NewPos, 2f).SetEase(Ease.OutBack);
+            if (player.transform.GetChild(i))
+            {
+                player.transform.GetChild(i).DOLocalMove(NewPos, 2f).SetEase(Ease.OutBack);
+            
+            }
             Countertxt.text = numberofstickman.ToString();
+            
         }
     }
 
@@ -342,6 +346,7 @@ public class PlayerManager : MonoBehaviour
         {
             enemy = other.transform;
             attack=true;
+            EnemyManager.enemyManagerInstance.attack = true;
             roadSpeed = -40f;
             
             
@@ -349,6 +354,8 @@ public class PlayerManager : MonoBehaviour
 
             StartCoroutine(UpdatetheNumbersOfPlayers());
         }
+
+        
 
         if (other.CompareTag("bosszone"))
         {
@@ -361,6 +368,7 @@ public class PlayerManager : MonoBehaviour
 
             
         }
+        
 
         if (other.CompareTag("bosszone"))
         {

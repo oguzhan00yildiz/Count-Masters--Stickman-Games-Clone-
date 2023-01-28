@@ -39,7 +39,8 @@ public class StickmanManager : MonoBehaviour
         {
              Scollider.enabled = false;
              Destroy(gameObject);
-             Instantiate(bloodsplashblue,transform.position + new Vector3(0,5f,0),Quaternion.identity);
+             GameObject bsb= Instantiate(bloodsplashblue,transform.position + new Vector3(0,5f,0),Quaternion.identity);
+             Destroy(bsb,1f);
             
         }
         
@@ -49,13 +50,14 @@ public class StickmanManager : MonoBehaviour
 
             BossManager.bossManagerInstance.BossGetDamage();
             
-            Debug.Log(rnd);
+           
             if (rnd == 1 )
             {
             Vector3 pos = transform.position;
             pos.y = pos.y +5f;
 
-                Instantiate(smokeeffect,pos,Quaternion.identity);
+               GameObject smoke= Instantiate(smokeeffect,pos,Quaternion.identity);
+                Destroy(smoke,1f);
                 
 
             }

@@ -31,12 +31,18 @@ public class EnemyStickmanManager : MonoBehaviour
     {
         if ( EnemyManager.enemyManagerInstance.attack )
         {
+        
              Redanim.SetBool("RedRun",true);
+
+             
 
         }
         else
         {
             Redanim.SetBool("RedRun",false);
         }
+        
+       
+        
     }
 }

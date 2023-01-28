@@ -139,12 +139,12 @@ public class SceneManager : MonoBehaviour
     {
         
 
-        if (fillamount > 0.99f)
+        if ( BossManager.bossManagerInstance.currenthealth == 0)
         {
             PlayerManager.PlayerManagerInstance.roadSpeed =0f;
             PlayerManager.PlayerManagerInstance.playerSpeed=0f;
 
-            yield return new WaitForSecondsRealtime(2f);
+            yield return new WaitForSecondsRealtime(4f);
             levelCompletedPanel.gameObject.SetActive(true);
             
             

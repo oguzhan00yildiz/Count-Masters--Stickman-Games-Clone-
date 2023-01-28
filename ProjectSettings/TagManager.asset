@@ -15,6 +15,7 @@ TagManager:
   - boss
   - bosshealth
   - bat
+  - enemy1
   layers:
   - Default
   - TransparentFX

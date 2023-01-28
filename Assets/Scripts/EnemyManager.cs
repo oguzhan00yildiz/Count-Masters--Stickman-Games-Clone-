@@ -29,7 +29,7 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < Random.Range(20,120); i++)
+        for (int i = 0; i < Random.Range(20,35); i++)
         {
             Instantiate(stickman,transform.position,new Quaternion(0f,180f,0f,1f),transform);
         }
@@ -66,6 +66,11 @@ public class EnemyManager : MonoBehaviour
             
          }
        }
+
+       if (transform.childCount == 0)
+       {
+            attack = false;
+       }
     }
 
      private void FormatStickman()
@@ -75,8 +80,11 @@ public class EnemyManager : MonoBehaviour
             var x =DistanceFactor * Mathf.Sqrt(i) * Mathf.Cos(i*Radius);
             var z =DistanceFactor * Mathf.Sqrt(i) * Mathf.Sin(i*Radius);
             var NewPos = new Vector3(x,0.28f,z);
-
-            transform.transform.GetChild(i).localPosition = NewPos;
+            if ( transform.GetChild(i))
+            {
+                transform.GetChild(i).localPosition = NewPos;
+            }
+                
         }
     }
 
@@ -85,19 +93,13 @@ public class EnemyManager : MonoBehaviour
 
         enemy = enemyForce;
         attack=true;
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            //düşman karakterin koşma animasyonunu alıştır.
-        }
+        
     }
 
     public void StopAttack()
     {
        PlayerManager.PlayerManagerInstance.gameState =attack = false;
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            //transform.GetChild(i).GetComponent<>().SetBool("run",false);
-        }
+        
 
     }
 }

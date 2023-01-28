@@ -7,7 +7,7 @@ public class BossManager : MonoBehaviour
 {
     [Header("Boss Settings")]
     [SerializeField] private float bossHealth=35;
-    [SerializeField] private float currenthealth;
+    [SerializeField] public float currenthealth;
     [SerializeField] private Image sliderimage;
     [SerializeField] private float fillamount;
     public static BossManager bossManagerInstance;
@@ -45,8 +45,10 @@ public class BossManager : MonoBehaviour
             PlayerManager.PlayerManagerInstance.roadSpeed=0;
 
            
-
+            GetComponent<BoxCollider>().enabled=false;
+            transform.parent.GetChild(2).GetChild(1).transform.gameObject.SetActive(false);
             animator.SetTrigger("BossDead");
+
         }else
         {
             isbossdead=false;
