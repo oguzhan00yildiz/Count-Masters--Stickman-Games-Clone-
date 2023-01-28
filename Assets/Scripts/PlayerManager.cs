@@ -411,7 +411,10 @@ public class PlayerManager : MonoBehaviour
     public void PopUpTxtHandler(string generatedNumber)
     {
         GameObject PopUpClone = Instantiate(PopUpTxt, transform.position, Quaternion.identity);
+
         PopUpCloneText = PopUpClone.transform.GetChild(0).GetComponent<TextMeshPro>();
         PopUpCloneText.text = generatedNumber;
+
+        Destroy(PopUpClone,3f);
     }
 }

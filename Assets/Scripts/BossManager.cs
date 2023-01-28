@@ -53,6 +53,8 @@ public class BossManager : MonoBehaviour
         {
             isbossdead=false;
         }
+
+        
         
     }
 
@@ -64,7 +66,7 @@ public class BossManager : MonoBehaviour
 
    IEnumerator BossRun()
    {
-        if(PlayerManager.PlayerManagerInstance.bosszone)
+        if(PlayerManager.PlayerManagerInstance.bosszone && PlayerManager.PlayerManagerInstance.numberofstickman > 0)
         {
             animator.SetBool("StartRun",true);
             yield return new WaitForSeconds(1f);
@@ -74,6 +76,10 @@ public class BossManager : MonoBehaviour
         {
             animator.SetBool("StartRun", false);
             animator.SetBool("IsBossAttacking",false);
+            
+            
+            
+        
         }
    }
 
