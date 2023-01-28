@@ -139,7 +139,7 @@ public class SceneManager : MonoBehaviour
     {
         
 
-        if ( BossManager.bossManagerInstance.currenthealth == 0)
+        if ( BossManager.bossManagerInstance.currenthealth < 0)
         {
             PlayerManager.PlayerManagerInstance.roadSpeed =0f;
             PlayerManager.PlayerManagerInstance.playerSpeed=0f;
