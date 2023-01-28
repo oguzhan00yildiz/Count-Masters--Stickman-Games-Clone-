@@ -93,7 +93,7 @@ public class SceneManager : MonoBehaviour
         vibrationOnButton.gameObject.SetActive(false);
         vibrationOffButton.gameObject.SetActive(true);
 
-        //titreşimi aç
+      
     }
 
     public void VibrationOff()
@@ -102,7 +102,7 @@ public class SceneManager : MonoBehaviour
         vibrationOffButton.gameObject.SetActive(false);
 
 
-        //titreşimi kapat
+       
     }
 
     public void SoundOn()
@@ -110,7 +110,7 @@ public class SceneManager : MonoBehaviour
         soundOnButton.gameObject.SetActive(false);
         soundOffButton.gameObject.SetActive(true);
 
-        //ses aç
+        
     }
 
     public void SoundOff()
@@ -118,7 +118,7 @@ public class SceneManager : MonoBehaviour
         soundOnButton.gameObject.SetActive(true);
         soundOffButton.gameObject.SetActive(false);
 
-        //ses kapat
+       
     }
 
 

@@ -33,7 +33,7 @@ public class BossManager : MonoBehaviour
 
         if (fillamount < 0.01f)
         {
-            //Destroy(transform.parent.gameObject);
+            
         }
 
         StartCoroutine(BossRun());

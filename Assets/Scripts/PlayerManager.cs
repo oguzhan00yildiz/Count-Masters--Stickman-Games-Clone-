@@ -144,7 +144,7 @@ public class PlayerManager : MonoBehaviour
                     anim.SetBool("EnemyZoneanim",true);
                     
                     Destroy(enemy.gameObject,0.5f);
-                    //enemy.gameObject.SetActive(false);
+                    
                 
             
             }
